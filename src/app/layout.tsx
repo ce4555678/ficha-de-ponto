@@ -26,14 +26,14 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://fichadeponto.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'http://localhost:3000',
+    url: 'https://fichadeponto.vercel.app',
     title: 'Ficha de Ponto - Controle de Horários',
     description: 'Sistema completo para controle de ponto e gestão de horários de trabalho.',
     siteName: 'Ficha de Ponto',

@@ -243,7 +243,7 @@ function DashboardContent() {
                 id="filterMonth"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                 value={filterMonth}
-                onChange={(event) => setFilterMonth(Number(event.target.value))}
+                onChange={(event) => setFilterMonth(Number((event.target as any).value))}
               >
                 {monthOptions.map((month) => (
                   <option key={month.value} value={month.value}>
@@ -260,7 +260,7 @@ function DashboardContent() {
                 id="filterYear"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                 value={filterYear}
-                onChange={(event) => setFilterYear(Number(event.target.value))}
+                onChange={(event) => setFilterYear(Number((event.target as any).value))}
               >
                 {availableYears.map((year) => (
                   <option key={year} value={year}>

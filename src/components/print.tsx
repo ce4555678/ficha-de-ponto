@@ -40,9 +40,9 @@ const Print = () => {
 
   return (
     <div>
-        <Button onClick={() => window.print()} className="print:hidden mb-10">
+        <Button onClick={() => {}} className="print:hidden mb-10">
           <PrinterIcon/>
-          Clique aqui para imprimir</Button>
+          Use Ctrl+P (ou Cmd+P) para imprimir</Button>
       <div className="w-[210mm] min-h-[297mm]  px-[12mm] py-[10mm] mx-auto bg-white text-[9px] uppercase font-sans leading-tight">
 
       {/* Cabeçalho Principal */}

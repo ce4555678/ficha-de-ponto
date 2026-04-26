@@ -62,15 +62,18 @@ export const metadata = {
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-  ],
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
+
+export const themeColor = [
+  { media: '(prefers-color-scheme: light)', color: 'white' },
+  { media: '(prefers-color-scheme: dark)', color: 'black' },
+]
 
 export default function RootLayout({
   children,

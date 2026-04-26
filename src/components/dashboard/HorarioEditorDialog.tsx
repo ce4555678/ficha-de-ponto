@@ -89,7 +89,7 @@ export function HorarioEditorDialog({
                 max={31}
                 value={form.dia || ""}
                 onChange={(event) => {
-                  const value = event.target.value
+                  const value = (event.target as any).value
                   setForm((current) => ({ ...current, dia: value === "" ? 1 : Number(value) }))
                 }}
               />
@@ -100,7 +100,7 @@ export function HorarioEditorDialog({
                 id="mes"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                 value={form.mes}
-                onChange={(event) => setForm((current) => ({ ...current, mes: Number(event.target.value) }))}
+                onChange={(event) => setForm((current) => ({ ...current, mes: Number((event.target as any).value) }))}
               >
                 {monthOptions.map((month) => (
                   <option key={month.value} value={month.value}>
@@ -118,7 +118,7 @@ export function HorarioEditorDialog({
                 max={2100}
                 value={form.ano || ""}
                 onChange={(event) => {
-                  const value = event.target.value
+                  const value = (event.target as any).value
                   setForm((current) => ({ ...current, ano: value === "" ? new Date().getFullYear() : Number(value) }))
                 }}
               />
@@ -132,7 +132,7 @@ export function HorarioEditorDialog({
                 id="horario"
                 type="time"
                 value={form.horario}
-                onChange={(event) => setForm((current) => ({ ...current, horario: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, horario: (event.target as any).value }))}
               />
             </div>
             <div>
@@ -141,7 +141,7 @@ export function HorarioEditorDialog({
                 id="type"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                 value={form.type}
-                onChange={(event) => setForm((current) => ({ ...current, type: event.target.value as HorarioFormData["type"] }))}
+                onChange={(event) => setForm((current) => ({ ...current, type: (event.target as any).value as HorarioFormData["type"] }))}
               >
                 {horarioTypes.map((item) => (
                   <option key={item.value} value={item.value}>

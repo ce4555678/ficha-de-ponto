@@ -70,7 +70,7 @@ export function CadastroEditorDialog({
                 id="nome"
                 type="text"
                 value={form.nome}
-                onChange={(event) => setForm((current) => ({ ...current, nome: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, nome: (event.target as any).value }))}
                 required
               />
             </div>
@@ -82,7 +82,7 @@ export function CadastroEditorDialog({
                 min={1}
                 value={form.matricula || ""}
                 onChange={(event) => {
-                  const value = event.target.value
+                  const value = (event.target as any).value
                   setForm((current) => ({ ...current, matricula: value === "" ? 0 : Number(value) }))
                 }}
                 required
@@ -97,7 +97,7 @@ export function CadastroEditorDialog({
                 id="admissao"
                 type="date"
                 value={form.admissao}
-                onChange={(event) => setForm((current) => ({ ...current, admissao: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, admissao: (event.target as any).value }))}
                 required
               />
             </div>
@@ -107,7 +107,7 @@ export function CadastroEditorDialog({
                 id="contratante"
                 type="text"
                 value={form.contratante}
-                onChange={(event) => setForm((current) => ({ ...current, contratante: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, contratante: (event.target as any).value }))}
                 required
               />
             </div>
@@ -120,7 +120,7 @@ export function CadastroEditorDialog({
                 id="cnpj"
                 type="text"
                 value={form.cnpj}
-                onChange={(event) => setForm((current) => ({ ...current, cnpj: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, cnpj: (event.target as any).value }))}
                 required
               />
             </div>
@@ -130,7 +130,7 @@ export function CadastroEditorDialog({
                 id="ctps"
                 type="text"
                 value={form.ctps}
-                onChange={(event) => setForm((current) => ({ ...current, ctps: event.target.value }))}
+                onChange={(event) => setForm((current) => ({ ...current, ctps: (event.target as any).value }))}
                 required
               />
             </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { type FormEvent, useEffect, useState } from "react"
+import { type FormEvent, useEffect, useEffectEvent, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -41,8 +41,8 @@ export function CadastroEditorDialog({
   }))
   const [isSaving, setIsSaving] = useState(false)
 
-    useEffect(() => {
-  if (initialData) {
+  const startInitData = useEffectEvent(() => {
+      if (initialData) {
     setForm({
       nome: initialData.nome ?? "",
       admissao: new Date(initialData.admissao).toISOString().slice(0, 10),
@@ -62,6 +62,9 @@ export function CadastroEditorDialog({
       ctps: "",
     })
   }
+  })
+    useEffect(() => {
+startInitData()
 }, [initialData])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {

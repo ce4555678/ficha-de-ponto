@@ -5,8 +5,10 @@ import { parseAsInteger, useQueryState } from 'nuqs';
 import localFont from 'next/font/local'
 import { Button } from './ui/button';
 import { PrinterIcon } from 'lucide-react';
-import { Activity } from 'react';
+import { Activity, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useReactToPrint } from "react-to-print";
+
 export const myFont = localFont({
   src: [
     {
@@ -28,6 +30,8 @@ const Print = () => {
   const dataAte = new Date(ano, mes - 1, dias.length);
     const horarios = useLiveQuery(() => db.horarios.where('[ano+mes]')
   .equals([ano, mes]).toArray()) || []
+  const contentRef = useRef<HTMLDivElement>(null);
+const reactToPrintFn = useReactToPrint({ contentRef });
 
     const cadastroFind : Cadastro | undefined = useLiveQuery(() => db.cadastro.toArray(), [])?.[0]
 
@@ -40,10 +44,10 @@ const Print = () => {
 
   return (
     <div>
-        <Button onClick={() => {}} className="print:hidden mb-10">
+        <Button onClick={reactToPrintFn} className="print:hidden mb-10">
           <PrinterIcon/>
           Use Ctrl+P (ou Cmd+P) para imprimir</Button>
-      <div className="w-[210mm] min-h-[297mm]  px-[12mm] py-[10mm] mx-auto bg-white text-[9px] uppercase font-sans leading-tight">
+      <div ref={contentRef} className="w-[210mm] min-h-[297mm]  px-[12mm] py-[10mm] mx-auto bg-white text-[9px] uppercase font-sans leading-tight">
 
       {/* Cabeçalho Principal */}
       <div className="text-center py-2 border-t border-l border-r border-black">

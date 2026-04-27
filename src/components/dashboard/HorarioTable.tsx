@@ -32,7 +32,7 @@ export function HorarioTable({ horarios, onEdit, onDelete }: HorarioTableProps) 
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-card">
+    <div className="overflow-x-scroll rounded-3xl border border-border bg-card">
       <table className="min-w-full border-separate border-spacing-0 text-left text-sm">
         <thead className="bg-muted text-xs uppercase tracking-wide text-muted-foreground">
           <tr>

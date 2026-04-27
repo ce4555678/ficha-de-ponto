@@ -1,6 +1,5 @@
 import { FullPageLoading } from "@/components/full-page-loading";
 import Print from "@/components/print";
-import { Button } from "@base-ui/react";
 import { Suspense } from 'react'
 
 export const metadata = {

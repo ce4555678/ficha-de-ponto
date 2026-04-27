@@ -1,6 +1,6 @@
 "use client"
 
-import { type FormEvent, useState } from "react"
+import { type FormEvent, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -30,6 +30,7 @@ export function CadastroEditorDialog({
   initialData,
   onSave,
 }: CadastroEditorDialogProps) {
+
   const [form, setForm] = useState<CadastroFormData>(() => ({
     nome: initialData?.nome ?? "",
     admissao: initialData ? new Date(initialData.admissao).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
@@ -39,6 +40,29 @@ export function CadastroEditorDialog({
     ctps: initialData?.ctps ?? "",
   }))
   const [isSaving, setIsSaving] = useState(false)
+
+    useEffect(() => {
+  if (initialData) {
+    setForm({
+      nome: initialData.nome ?? "",
+      admissao: new Date(initialData.admissao).toISOString().slice(0, 10),
+      matricula: initialData.matricula ?? 0,
+      contratante: initialData.contratante ?? "",
+      cnpj: initialData.cnpj ?? "",
+      ctps: initialData.ctps ?? "",
+    })
+  } else {
+    // Caso seja um "Novo Cadastro", reseta para o vazio
+    setForm({
+      nome: "",
+      admissao: new Date().toISOString().slice(0, 10),
+      matricula: 0,
+      contratante: "",
+      cnpj: "",
+      ctps: "",
+    })
+  }
+}, [initialData])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()

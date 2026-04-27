@@ -43,8 +43,8 @@ function DashboardContent() {
   const currentYear = new Date().getFullYear()
   const currentMonth = new Date().getMonth() + 1
   const { addHorario, updateHorario, deleteHorario, addCadastro, updateCadastro } = useDb()
-  const horarios = useLiveQuery<Horario[]>(() => db.horarios.orderBy("created_at").reverse().toArray(), [])
-  const cadastro = useLiveQuery<Cadastro | undefined>(() => db.cadastro.orderBy("created_at").reverse().first(), [])
+  const horarios = useLiveQuery<Horario[]>(() => db.horarios.where('[ano+mes]').equals([filterYear, filterMonth]).toArray(), [])
+  const cadastro = useLiveQuery<Cadastro | undefined>(() => db.cadastro.reverse().first())
   const [editorOpen, setEditorOpen] = useState(false)
   const [cadastroOpen, setCadastroOpen] = useState(false)
   const [editingHorario, setEditingHorario] = useState<Horario | undefined>(undefined)
@@ -196,7 +196,7 @@ function DashboardContent() {
               <p className="text-sm font-medium text-muted-foreground">Cadastro</p>
                   {cadastro ? (
                 <div className="mt-4 space-y-3 text-sm text-foreground">
-                  <div>
+                  <div className=" capitalize">
                     <span className="font-semibold">Nome:</span> {cadastro.nome}
                   </div>
                   <div>
@@ -206,13 +206,13 @@ function DashboardContent() {
                     <span className="font-semibold">Admissão:</span>{" "}
                     {new Date(cadastro.admissao).toLocaleDateString("pt-BR")}
                   </div>
-                  <div>
+                  <div className="capitalize">
                     <span className="font-semibold">Contratante:</span> {cadastro.contratante}
                   </div>
                   <div>
                     <span className="font-semibold">CNPJ:</span> {cadastro.cnpj}
                   </div>
-                  <div>
+                  <div className="uppercase">
                     <span className="font-semibold">CTPS:</span> {cadastro.ctps}
                   </div>
                 </div>
@@ -301,7 +301,7 @@ function DashboardContent() {
       <CadastroEditorDialog
         open={cadastroOpen}
         onOpenChange={setCadastroOpen}
-        initialData={cadastro ?? undefined}
+        initialData={cadastro}
         onSave={handleCadastroSave}
       />
 
